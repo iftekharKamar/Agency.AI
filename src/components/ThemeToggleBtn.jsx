@@ -3,6 +3,12 @@ import assets from "../assets/assets"
 
 const ThemeToggleBtn = ({ theme, setTheme }) => {
 
+
+     useEffect(() => {
+        const prefersDarkMode=window.matchMedia('(prefers-color-scheme: dark)').matches;
+        setTheme(theme || (prefersDarkMode ? "dark":"light"))
+    }, []);
+
     useEffect(() => {
         const root = window.document.documentElement;
         if (theme === 'dark') {
